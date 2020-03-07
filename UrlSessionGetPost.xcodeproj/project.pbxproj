@@ -12,6 +12,8 @@
 		ADE9A8B12413AB3D00D1D4DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE9A8AF2413AB3D00D1D4DB /* Main.storyboard */; };
 		ADE9A8B32413AB5200D1D4DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE9A8B22413AB5200D1D4DB /* Assets.xcassets */; };
 		ADE9A8B62413AB5200D1D4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE9A8B42413AB5200D1D4DB /* LaunchScreen.storyboard */; };
+		ADE9A8BF2413ACDE00D1D4DB /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE9A8BD2413ACDD00D1D4DB /* DetailsTableViewCell.swift */; };
+		ADE9A8C02413ACDE00D1D4DB /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE9A8BE2413ACDD00D1D4DB /* PostData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		ADE9A8B22413AB5200D1D4DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADE9A8B52413AB5200D1D4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADE9A8B72413AB5200D1D4DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADE9A8BD2413ACDD00D1D4DB /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		ADE9A8BE2413ACDD00D1D4DB /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		ADE9A8AA2413AB3D00D1D4DB /* UrlSessionGetPost */ = {
 			isa = PBXGroup;
 			children = (
+				ADE9A8BD2413ACDD00D1D4DB /* DetailsTableViewCell.swift */,
+				ADE9A8BE2413ACDD00D1D4DB /* PostData.swift */,
 				ADE9A8AB2413AB3D00D1D4DB /* AppDelegate.swift */,
 				ADE9A8AD2413AB3D00D1D4DB /* ViewController.swift */,
 				ADE9A8AF2413AB3D00D1D4DB /* Main.storyboard */,
@@ -135,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADE9A8BF2413ACDE00D1D4DB /* DetailsTableViewCell.swift in Sources */,
+				ADE9A8C02413ACDE00D1D4DB /* PostData.swift in Sources */,
 				ADE9A8AE2413AB3D00D1D4DB /* ViewController.swift in Sources */,
 				ADE9A8AC2413AB3D00D1D4DB /* AppDelegate.swift in Sources */,
 			);
