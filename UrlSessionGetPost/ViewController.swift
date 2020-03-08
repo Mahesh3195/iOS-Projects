@@ -10,17 +10,21 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    
     @IBOutlet weak var Display_tbl: UITableView!
     var res_count:Int!
     var res = [NSDictionary]()
-    var data_arr:NSDictionary!
+    var per_first_name:String!
+    var per_last_name:String!
+    var per_full_name:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpPostMethod()
+        
         Display_tbl.delegate = self
         Display_tbl.dataSource = self
         //Display_tbl.backgroundColor = UIColor.yellow
+        setUpPostMethod()
         
     }
     
@@ -36,11 +40,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DetailsTableViewCell
         cell.Title_lbl.text = res[indexPath.row].value(forKey: "first_name") as! String?
         cell.detail_lbl.text = res[indexPath.row].value(forKey: "last_name") as! String?
+        self.per_full_name = "\(cell.Title_lbl.text!) \(cell.detail_lbl.text!)"
         if let image = getImage(from: res[indexPath.row].value(forKey: "avatar") as! String) {
             //5. Apply image avatar
             cell.detail_imv.image = image
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+    
+        let vc = storyboard?.instantiateViewController(withIdentifier: "CellDetail_pg") as? CellDetail
+        
+        vc?.name = "\(res[indexPath.row].value(forKey: "first_name") as! String) \(res[indexPath.row].value(forKey: "last_name") as! String)"
+        vc?.image = getImage(from: res[indexPath.row].value(forKey: "avatar") as! String)!
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+       //  print("IndexPath: \(indexPath)")
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -57,7 +75,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             URLSession.shared.dataTask(with: request) { (data,response,error) in
                 guard let data = data else {
                     if error == nil {
-                        print(error?.localizedDescription ?? "Unknown Error")
+                       // print(error?.localizedDescription ?? "Unknown Error")
                     }
                     return
                 }
@@ -76,16 +94,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     
                     let result = (dict as AnyObject).value(forKey: "data") as! [NSDictionary]
                     self.res = result
+                    //self.res.append(result)
                     self.res_count = result.count;
                     print(result)
                     //print(self.res_count!)
                     
-                    self.Display_tbl.reloadData()
+                    for i in self.res {
+                        self.per_first_name = i.value(forKey: "first_name") as! String
+                       // print(self.per_first_name!)
+                    }
+                   // self.per_first_name = self.res[0].value(forKey: "first_name") as? String
+                  
                     
                 }catch let error {
                     print(error.localizedDescription)
                 }
-                }.resume()
+                self.Display_tbl.reloadData()
+                
+            }.resume()
             
         }
     }
